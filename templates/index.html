@@ -86,9 +86,9 @@
 
 <p id="running"></p>
 
-<center><a href = "../plots/SP_timeseries_averaged_2017_groundData2_vapor.png"><img src="../plots/SP_timeseries_averaged_2017_groundData2_vapor.png" width="1000"></a></center><br>
+<center><a href = "{{ url_for('static',filename = imageFile) }}"><img src= "{{ url_for('static',filename = imageFile) }}" width="1000"></a></center><br>
 
-Download brightness temperature data as <a href="/n/home10/anwang16/merra2_work/merra2_products/%s/Tsky_%s_%s_%s_gndData%s.csv"%(site, site,tstart,tend,groundData)>ASCII Data</a>.<br>
+Download brightness temperature data as <a href = "{{ url_for('static',filename = tskyFileName) }}">CSV file</a>.<br>
 Download PWV data as <a href="http://www.apex-telescope.org/scripts/transpwv2/pgplot.data">ASCII Data</a>.<br>
 Download full dataset as <a href="http://www.apex-telescope.org/scripts/transpwv2/pgplot.data">pickle file</a>.<br>
 <p><a href="javascript: history.go(-1)"></p>

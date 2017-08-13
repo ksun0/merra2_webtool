@@ -149,6 +149,7 @@ class merra2Player():
                 print("Found %d amc files for %s. Not regenerating ... " %(size(amcFileList),date))
             else:
                 profile = self.createProfile(date.strftime('%Y%m%d'), groundData = gndData, plotFig=False)
+                print profile
                 amcFileList = self.profile2am(profile, cloud = cloudData)
 
             for amcFile in amcFileList:
@@ -728,6 +729,9 @@ class merra2Player():
         #incorporating surface data
         # for each time step
         for ti in range(ntimesteps):
+            print "ti",ti
+            print groundData
+            print date
             date = datetime.datetime.strftime(dateTime[ti],'%Y%m%d')
             if (groundData == 1):
                #retrieve data from the relevant Wx file
@@ -938,6 +942,8 @@ class merra2Player():
 
         amcList=[]
         #loop over all the timesteps
+        print profile
+        print profile['time']
         for t_idx, t in enumerate(profile['time']):
 
             layers = profile['layers'][t_idx,:,:]
@@ -1162,7 +1168,8 @@ class merra2Player():
             return f,Aflat, Aflat
 
         elif expt == 'keck' and band != '270':
-            auxDataDir = '/n/holylfs/LABS/kovac_lab/keck/keck_aux_data/bandpass/'
+            #auxDataDir = '/n/holylfs/LABS/kovac_lab/keck/keck_aux_data/bandpass/'
+            auxDataDir = ''
             if band == '150':
                 filename = 'B2_frequency_spectrum_20141216.txt'
                 cutoff=[110,190]
@@ -1187,7 +1194,9 @@ class merra2Player():
             return f,Aflat,Arj
 
         elif expt =='keck' and band == '270':
-            filename = '/n/holylfs/LABS/kovac_lab/keck/fts/K270_frequency_spectrum_preliminary.txt'
+            #filename = '/n/holylfs/LABS/kovac_lab/keck/fts/K270_frequency_spectrum_preliminary.txt'
+            filename = 'K270_frequency_spectrum_preliminary.txt'
+
             cutoff = [200,340]
             e = genfromtxt(filename, delimiter=',',names=['f','band'], comments='#')
             f = e['f']

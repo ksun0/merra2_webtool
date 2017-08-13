@@ -1,0 +1,7 @@
+2009	3	7	14.269	5179.5947	65.5945	6.5945	 4.00	 4.21	294.01	 8.82	540.68	 0.94	10.32	 1.09	323.44	292.13	140.43	277.94	299.23	0	55.59
+2009	3	9	17.285	5181.7202	67.7202	8.7202	 1.29	 0.17	200.32	 5.55	68.64	 0.97	10.28	 0.77	319.76	298.50	220.66	280.84	305.80	0	56.17
+# Unit 3, Cerro Chajnantor CCAT, Filter  0,  Slot 1, 350 um (616) & yellow
+#				days
+#				since		day of	day of
+# yr	mo	dy	 time	1/1/1995	year	month	Tau	unc	Tatm	unc	mse	fitgood	Etime	R	Thot	Twarm	Tchop	Tamb	<Tint>	Filter	Toff
+# 1	2	3	4	5		6	7	8	9	10	11	12	13	14	15	16	17	18	19	20	21	22

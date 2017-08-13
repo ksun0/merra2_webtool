@@ -5,7 +5,7 @@ import pickle
 import os
 from pylab import *
 import merra2Player as m2p
-app = Flask(__name__)
+app = Flask(__name__,static_folder='merra2_output')
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'scikit4life'
 
@@ -18,17 +18,19 @@ class ReusableForm(Form):
 def hello():
     form = ReusableForm(request.form)
     tskyFileName = ""
-    imageFile = ""
+    imageFile = "SP_timeseries_averaged_2017_groundData2_vapor.png"
     print(form.errors)
     if request.method == 'POST':
         site=request.form['site']
-        groundData="2"
+        groundData=2
         tstart=request.form['tstart']
         tend=request.form['tend']
         band="tipper850"
         output="tsky"
-        tskyFileName = "merra2_output/Tsky_%s_%s_%s_gndData%s.csv"%(site,tstart,tend,groundData)
-        imageFile = "merra2_output/tsky-%s-%s-%s.png"%(site,tstart,tend)
+        tskyFileName = "Tsky_%s_%s_%s_gndData%s.csv"%(site,tstart,tend,groundData)
+        imageFile = "tsky-%s-%s-%s.png"%(site,tstart,tend)
+        print tstart,tend,site,groundData,band,output,tskyFileName,imageFile
+        
 
         if form.validate():
             predictTsky(site, groundData, tstart, tend, band, output)
@@ -37,7 +39,7 @@ def hello():
             flash('Error categorizing article.')
     return render_template('index.html', form=form, tskyFileName = tskyFileName, imageFile = imageFile)
 
-def predictTsky(site = "SouthPole", groundData = "2", tstart = None, tend = None, band = 'tipper850', output = 'tsky'):
+def predictTsky(site = "SouthPole", groundData = 2, tstart = None, tend = None, band = 'tipper850', output = 'tsky'):
     if tstart == None:
         print(" ### Error: You must specify a start datetime with the -s option.\n")
         exit()
