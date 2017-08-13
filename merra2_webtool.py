@@ -3,6 +3,8 @@ from wtforms import Form, TextField, TextAreaField, validators, StringField, Sub
 import datetime
 import pickle
 import os
+import matplotlib
+matplotlib.use('Agg')
 from pylab import *
 import merra2Player as m2p
 app = Flask(__name__,static_folder='merra2_output')
@@ -30,7 +32,7 @@ def hello():
         tskyFileName = "Tsky_%s_%s_%s_gndData%s.csv"%(site,tstart,tend,groundData)
         imageFile = "tsky-%s-%s-%s.png"%(site,tstart,tend)
         print tstart,tend,site,groundData,band,output,tskyFileName,imageFile
-        
+
 
         if form.validate():
             predictTsky(site, groundData, tstart, tend, band, output)
