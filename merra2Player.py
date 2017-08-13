@@ -3,6 +3,8 @@ import urllib2
 import datetime
 import dateutil.rrule as rr
 import netCDF4
+import matplotlib
+matplotlib.use('Agg')
 from pylab import *
 import glob
 import cookielib

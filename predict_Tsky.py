@@ -6,6 +6,8 @@ import datetime
 import pickle
 import os
 import cgi, cgitb
+import matplotlib
+matplotlib.use('Agg')
 from pylab import *
 import merra2Player as m2p
 
