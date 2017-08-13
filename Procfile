@@ -1,1 +1,1 @@
-web gunicorn manage:app
+web gunicorn merra2_webtool:app
